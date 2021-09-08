@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Flight Gear Controller</string>
+    <string name="ip">IP address</string>
+    <string name="port">port number</string>
+    <string name="connect_btn">Connect</string>
+    <string name="rudderLabel">Rudder</string>
+    <string name="throttleLabel">Throttle</string>
+</resources>
