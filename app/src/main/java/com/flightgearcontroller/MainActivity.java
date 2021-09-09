@@ -10,12 +10,17 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import com.flightgearcontroller.databinding.ActivityMainBinding;
 
-// MainActivity class - the logic of the user interface
+/**
+ * MainActivity class - the logic behind the user interface.
+ */
 public class MainActivity extends AppCompatActivity {
     // declaring a field to hold the ViewModel
     private ViewModel vm;
 
-    // onCreate - creates the user interface and the logic behind it
+    /**
+     * onCreate - creates the user interface and the logic behind it.
+     * @param savedInstanceState The previously frozen state of the activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             vm.setAileron(aileron);
             vm.setElevator(elevator);
         };
-        // setting listeners to the ip and port EditTexts
+        // setting listeners to the IP address and port number EditTexts
         EditText ipAddress = findViewById(R.id.ip);
         ipAddress.addTextChangedListener(new TextWatcher() {
             @Override
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        // setting listeners to the rudder and throttle SeekBars
+        // setting listeners to the rudder's and throttle's SeekBars
         SeekBar rudderBar = findViewById(R.id.rudder);
         rudderBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
