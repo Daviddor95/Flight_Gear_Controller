@@ -9,7 +9,7 @@ Welcome aboard! The Flight Gear Controller Android application allows you to con
 
 Moving the joystick up and down controls the elevator value of the aircraft, while moving the joystick left and right controls the aileron value of the aircraft. Moving the left slider up and down controls the throttle value of the aircraft, while moving the bottom slider left and right controls the rudder value of the aircraft.
 
-![AppScreenshot](https://github.com/Ellakh/FlightGearJoystickApp/blob/master/ApplicationScreenshot.jpg)
+![AppScreenshot](https://github.com/Daviddor95/Flight_Gear_Controller/blob/master/ApplicationScreenshot.jpg)
 
 ## Getting Started
 The Flight Gear Controller application requires the following components:
@@ -79,7 +79,7 @@ coolJoystick.onChange = (x, y) -> {
 ```
 
 ## UML
-![UML](https://github.com/Ellakh/FlightGearJoystickApp/blob/master/UML.png)
+![UML](https://github.com/Daviddor95/Flight_Gear_Controller/blob/master/UML.png)
 
 ## Video presentation
 Coming soon.
@@ -93,8 +93,7 @@ Project by David Dorfman.
    [Android Studio]: <https://developer.android.com/studio>
    [Android Studio website]: <https://developer.android.com/studio>
    [Flight Gear website]: <https://www.flightgear.org/>
-   [Flight Gear Remote Joystick]: <https://github.com/Ellakh/FlightGearJoystickApp>
+   [Flight Gear Controller]: <https://github.com/Daviddor95/Flight_Gear_Controller>
    [Gradle]: <https://gradle.org/>
    [Android Gradle Plugin]: <https://gradle.org/>
    [Android SDK]: <https://developer.android.com/studio>
-   [Click here]: <https://youtu.be/W0z9mX4rGK8>
