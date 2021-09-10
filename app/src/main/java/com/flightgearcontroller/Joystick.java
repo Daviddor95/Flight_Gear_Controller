@@ -56,37 +56,6 @@ public class Joystick extends SurfaceView implements SurfaceHolder.Callback, Vie
     }
 
     /**
-     * initializeJoystick - initializes the Joystick class.
-     * @param context The application's environment information.
-     */
-    private void initializeJoystick(Context context) {
-        getHolder().addCallback(this);
-        setOnTouchListener(this);
-        if (context instanceof IChange) {
-            onChange = (IChange) context;
-        }
-    }
-
-    /**
-     * draw - draws the whole surface of the joystick based on the given location of the joystick.
-     * @param x The joystick's X coordinate.
-     * @param y The joystick's Y coordinate.
-     */
-    private void draw(float x, float y) {
-        if (getHolder().getSurface().isValid()) {
-            // creating a canvas object and drawing the background circle and the joystick's circle on it
-            Canvas canvas = getHolder().lockCanvas();
-            canvas.drawColor(Color.WHITE);
-            Paint paint = new Paint();
-            paint.setARGB(20, 80, 80, 80);
-            canvas.drawCircle(XPosition, YPosition, totalRadius, paint);
-            paint.setARGB(255, 102, 0, 155);
-            canvas.drawCircle(x, y, joystickRadius, paint);
-            getHolder().unlockCanvasAndPost(canvas);
-        }
-    }
-
-    /**
      * surfaceCreated - initializes the size and position of the joystick's circles on surface creation.
      * @param holder Holds a display surface.
      */
@@ -154,5 +123,36 @@ public class Joystick extends SurfaceView implements SurfaceHolder.Callback, Vie
             }
         }
         return true;
+    }
+
+    /**
+     * draw - draws the whole surface of the joystick based on the given location of the joystick.
+     * @param x The joystick's X coordinate.
+     * @param y The joystick's Y coordinate.
+     */
+    private void draw(float x, float y) {
+        if (getHolder().getSurface().isValid()) {
+            // creating a canvas object and drawing the background circle and the joystick's circle on it
+            Canvas canvas = getHolder().lockCanvas();
+            canvas.drawColor(Color.WHITE);
+            Paint paint = new Paint();
+            paint.setARGB(20, 80, 80, 80);
+            canvas.drawCircle(XPosition, YPosition, totalRadius, paint);
+            paint.setARGB(255, 102, 0, 155);
+            canvas.drawCircle(x, y, joystickRadius, paint);
+            getHolder().unlockCanvasAndPost(canvas);
+        }
+    }
+
+    /**
+     * initializeJoystick - initializes the Joystick class.
+     * @param context The application's environment information.
+     */
+    private void initializeJoystick(Context context) {
+        getHolder().addCallback(this);
+        setOnTouchListener(this);
+        if (context instanceof IChange) {
+            onChange = (IChange) context;
+        }
     }
 }
