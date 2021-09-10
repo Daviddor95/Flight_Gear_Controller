@@ -8,18 +8,25 @@ import java.net.UnknownHostException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-// Model class - the main business logic behind the project
+/**
+ * Model class - the main business logic behind the application.
+ */
 public class Model {
-    // declaring a taskQueue to hold the tasks, printIt to interact with the simulator, and terminate flag
+    // declaring an executor field to manage tasks and threads, and a printIt field to communicate with the simulator
     private final Executor executor;
     private PrintWriter printIt;
 
-    // Model - constructor of the Model class
+    /**
+     * Model - constructor of the Model class.
+     */
     public Model() {
         executor = Executors.newSingleThreadExecutor();
     }
 
-    // setAileron - adds the "set aileron" send to simulator command task to the queue
+    /**
+     * setAileron - sets the aileron value of the aircraft in the simulator to the given value.
+     * @param val The value to set the aircraft's aileron value to.
+     */
     public void setAileron(double val) {
         executor.execute(() -> {
             if (printIt != null) {
@@ -29,7 +36,10 @@ public class Model {
         });
     }
 
-    // setThrottle - adds the "set throttle" send to simulator command task to the queue
+    /**
+     * setThrottle - sets the throttle value of the aircraft in the simulator to the given value.
+     * @param val The value to set the aircraft's throttle value to.
+     */
     public void setThrottle(double val) {
         executor.execute(() -> {
             if (printIt != null) {
@@ -39,7 +49,10 @@ public class Model {
         });
     }
 
-    // setRudder - adds the "set rudder" send to simulator command task to the queue
+    /**
+     * setRudder - sets the rudder value of the aircraft in the simulator to the given value.
+     * @param val The value to set the aircraft's rudder value to.
+     */
     public void setRudder(double val) {
         executor.execute(() -> {
             if (printIt != null) {
@@ -49,7 +62,10 @@ public class Model {
         });
     }
 
-    // setElevator - adds the "set elevator" send to simulator command task to the queue
+    /**
+     * setElevator - sets the elevator value of the aircraft in the simulator to the given value.
+     * @param val The value to set the aircraft's elevator value to.
+     */
     public void setElevator(double val) {
         executor.execute(() -> {
             if (printIt != null) {
@@ -59,13 +75,17 @@ public class Model {
         });
     }
 
-    // connectToSimulatorInModel - adds the connect to simulator task to the queue
-    public void connectToSimulatorInModel(String ip, int port) throws UnknownHostException {
+    /**
+     * connectToSimulator - connects to the simulator.
+     * @param ip The IP address of the host to connect to.
+     * @param port The port number of the host to connect via.
+     * @throws UnknownHostException If the given IP address can't be reached.
+     */
+    public void connectToSimulator(String ip, int port) throws UnknownHostException {
         executor.execute(() -> {
-            Socket fg = null;
             try {
-                // creating a socket using the given ip address and port number
-                fg = new Socket(ip, port);
+                // creating a socket using the given IP address and port number
+                Socket fg = new Socket(ip, port);
                 // creating a PrintWriter object to communicate with the simulator
                 printIt = new PrintWriter(fg.getOutputStream(), true);
             } catch (IOException e) {

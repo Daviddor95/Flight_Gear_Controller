@@ -122,7 +122,7 @@ public class Joystick extends SurfaceView implements SurfaceHolder.Callback, Vie
      * onTouch - moves the joystick according to the touch event.
      * @param v The basis of the application's user interface.
      * @param event The movement events report.
-     * @return boolean Returns true.
+     * @return true.
      */
     @Override
     public boolean onTouch(View v, MotionEvent event) {

@@ -6,6 +6,8 @@ import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import com.flightgearcontroller.databinding.ActivityMainBinding;
@@ -87,6 +89,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        // setting a listener to the connect button
+        Button connect = findViewById(R.id.connect);
+        connect.setOnClickListener(v -> {
+            vm.connectToSimulator();
+            findViewById(R.id.appLayout).requestFocus();
+            // Hiding the keyboard
+            if (getCurrentFocus().getWindowToken() != null) {
+                InputMethodManager inputManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
         });
     }
 }
