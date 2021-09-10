@@ -1,0 +1,78 @@
+@startuml
+
+MainActivity o-- ViewModel
+ViewModel o-- Model
+AppCompatActivity <|-- MainActivity
+BaseObservable <|-- ViewModel
+SurfaceView <|-- Joystick
+Callback <|-- Joystick
+OnTouchListener <|-- Joystick
+Joystick o-- IChange
+
+class MainActivity {
+    - private ViewModel vm
+    # protected void onCreate(Bundle savedInstanceState)
+}
+
+class Joystick {
+    + IChange onChange
+    - float XPosition
+    - float YPosition
+    - float totalRadius
+    - float joystickRadius
+    + public void surfaceCreated(@NonNull SurfaceHolder holder)
+    + public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height)
+    + public void surfaceDestroyed(@NonNull SurfaceHolder holder)
+    + public boolean onTouch(View v, MotionEvent event)
+    - private void draw(float x, float y)
+    - private void initializeJoystick(Context context)
+}
+
+class ViewModel {
+    - Model mdl
+    - int rudder
+    - int throttle
+    - String ip
+    - String port
+    - String message
+    - boolean showControls
+    + public void setIp(String ipAddress)
+    + public String getIp()
+    + public void setPort(String portNumber)
+    + public String getPort()
+    + public void setAileron(double val)
+    + public void setElevator(double val)
+    + public void setThrottle(int throttle)
+    + public int getThrottle()
+    + public void setRudder(int rudder)
+    + public int getRudder()
+    + public void setShowControls(boolean bool)
+    + public boolean getShowControls()
+    + public void setMessage(String newMessage)
+    + public String getMessage()
+    + public void connectToSimulator()
+    - private boolean isValidPort()
+    - private boolean isValidIP()
+}
+
+class Model {
+    - Executor executor
+    - PrintWriter printIt
+    + public void setAileron(double val)
+    + public void setThrottle(double val)
+    + public void setRudder(double val)
+    + public void setElevator(double val)
+    + public void connectToSimulatorInModel(String ip, int port)
+}
+
+interface IChange {
+    + void move()
+}
+
+interface OnTouchListener {
+}
+
+interface Callback {
+}
+
+@enduml
